@@ -7,13 +7,13 @@ getwd()
 # If not correct then open the .RProj file File -> Open RProject
 
 # Install packages
-install.packages("tidyverse")
-install.packages("readxl")
-install.packages("lubridate")
-install.packages("reshape2")
-install.packages("RColorBrewer")
-install.packages("randomcoloR")
-install.packages("hms")
+#install.packages("tidyverse")
+#install.packages("readxl")
+#install.packages("lubridate")
+#install.packages("reshape2")
+#install.packages("RColorBrewer")
+#install.packages("randomcoloR")
+#install.packages("hms")
 library("tidyverse")
 library("readxl")
 library("lubridate")
@@ -40,7 +40,7 @@ temp <- read_excel(file_path) %>%
 temp # lots of NAs are ok
 
 # Read in the raw platereader data
-tmafils <- list.files(paste0(folder_path, "results/"), pattern = enzym, full.names = T) 
+tmafils <- list.files(paste0(folder_path, "/results/"), pattern = enzym, full.names = T) 
 tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right
 
@@ -59,12 +59,12 @@ write_csv(template_check, "data/template_check.csv")
 colnames(tma) <- make.unique(newnam) # set the column names
 tma
 
-# Clean up the data
+#Clean up the data
 tma1 <- tma %>%
   dplyr::select(-temperature_c) %>%   # remove the column for temperature (constant at 37C)
   dplyr::filter(!grepl("Time", time)) %>% # removes row if column names are duplicated
   dplyr::filter(complete.cases(.)) %>% # removes rows containing NAs
-  dplyr::mutate(time = round(as.numeric(hms(stringr::word(time, sep = " ", start = 2)))/60), 0) %>%
+  dplyr::mutate(time = round(as.numeric(lubridate::hms(stringr::word(time, sep = " ", start = 2)))/60), 0) %>%
   dplyr::select(-contains("NA."))# minutes 
 
 # Convert from wide to long format
@@ -83,7 +83,7 @@ pNPs <- resbind %>%
 
 # Linear regression
 pNP_fit <- lm(value ~ nmol, data = pNPs)
-
+summary(pNP_fit)
 pdf(paste0("output/", ddmmyy, "_", enzym, "_standard_curve.pdf"))
 pl <- ggplot(pNPs,  aes(x = nmol, y = value, color = time)) + 
   geom_point() +
@@ -105,12 +105,12 @@ pl
 
 # Calculate slope and intercept of pNP standard curve
 pNP_fit$coefficients
-b <- pNP_fit$coefficients[1]
+b <- pNP_fit$coefficients[1] #y = mx +b
 m <- pNP_fit$coefficients[2]
 
 # Now look at data
 dat2 <- resbind %>%
-  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|buffer", variable)) # Filter out variables you don't want
+  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|NA", variable)) # Filter out variables you don't want
 
 dat3 <- dat2 %>%
   dplyr::mutate(nmols_pNP = (value - b)/m) %>%
@@ -207,16 +207,16 @@ resll <- do.call(rbind.data.frame, res)
 
 # Find max slope for each organism
 resmax <- resl %>%
-  dplyr::filter(r2 >= 0.9) %>% # make sure R^2 is above or equal to 0.9
+  #dplyr::filter(r2 >= 0.9) %>% # make sure R^2 is above or equal to 0.9
   group_by(org) %>%
-  summarise_each(funs(max_slope = max), slope) %>%
-  dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
+  summarise_each(funs(max_slope = max), slope) #%>%
+  #dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
 resmax
 
 # Merge with the original dataset
 slope_merg <- resmax %>%
   inner_join(., resl, by = "org") %>%
-  dplyr::filter(r2 >= 0.9) %>% 
+  #dplyr::filter(r2 >= 0.9) %>% 
   group_by(org) %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::select(org, max_slope, r2, intercept)
