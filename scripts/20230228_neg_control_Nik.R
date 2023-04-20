@@ -24,13 +24,13 @@ library("hms")
 
 
 # Set the substrate (compound) and the date for enzyme activity screening
-enzym <- "chro" # change this for p055 etc.
-yyyymmdd <- "20230414"
+enzym <- "control" # change this for p055 etc.
+ddmmyy <- "20230227"
 
 # Read in the plate template
-folder_path <- file.path(paste0("data/", yyyymmdd, "/"))
+folder_path <- file.path(paste0("data/", ddmmyy, "/"))
 file_path <- list.files(folder_path, pattern = enzym, full.names = T)
-file_path <- file_path[grepl(pattern="Template",file_path)]
+
 temp <- read_excel(file_path) %>%
   janitor::clean_names() %>%
   dplyr::select(-x1) %>% 
@@ -40,13 +40,13 @@ temp <- read_excel(file_path) %>%
 temp # lots of NAs are ok
 
 # Read in the raw platereader data
-tmafils <- list.files(paste0(folder_path), pattern = enzym, full.names = T) 
-tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|Template|Tris", tmafils)] # remove any temporary files
+tmafils <- list.files(paste0(folder_path, "/results/"), pattern = enzym, full.names = T) 
+tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right
 
 # Split out the files into three separate files for each triplicate
 # NOTE: this is specific only for files where triplicates were done on the same plate
-tma <- read_excel(tmafils, range = "B43:CU104", col_types = c("date", rep("numeric", 97)))
+tma <- read_excel(tmafils, range = "B29:CU90", col_types = c("date", rep("numeric", 97)))
 oldnam <- as.vector(t(colnames(tma))) 
 oldnam
 newnam <- c("time", "temperature_c", paste0(temp))
@@ -59,13 +59,13 @@ write_csv(template_check, "data/template_check.csv")
 colnames(tma) <- make.unique(newnam) # set the column names
 tma
 
-# Clean up the data
+#Clean up the data
 tma1 <- tma %>%
   dplyr::select(-temperature_c) %>%   # remove the column for temperature (constant at 37C)
   dplyr::filter(!grepl("Time", time)) %>% # removes row if column names are duplicated
-  #dplyr::filter(complete.cases(.)) %>% # removes rows containing NAs
+  dplyr::filter(complete.cases(.)) %>% # removes rows containing NAs
   dplyr::mutate(time = round(as.numeric(lubridate::hms(stringr::word(time, sep = " ", start = 2)))/60), 0) %>%
-    dplyr::select(-contains("NA."))# minutes 
+  dplyr::select(-contains("NA."))# minutes 
 
 # Convert from wide to long format
 resbind <- tma1 %>%
@@ -83,12 +83,12 @@ pNPs <- resbind %>%
 
 # Linear regression
 pNP_fit <- lm(value ~ nmol, data = pNPs)
-
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_standard_curve.pdf"))
+summary(pNP_fit)
+pdf(paste0("output/", ddmmyy, "_", enzym, "_standard_curve.pdf"))
 pl <- ggplot(pNPs,  aes(x = nmol, y = value, color = time)) + 
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(y="Absorbance (380 nm)", x="nmol pNP") +
+  labs(y="Absorbance (410 nm)", x="nmol pNP") +
   theme(axis.line=element_line(color="black"),
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
@@ -103,16 +103,14 @@ pl
 dev.off()
 pl
 
-summary(pNP_fit)
-
 # Calculate slope and intercept of pNP standard curve
 pNP_fit$coefficients
-b <- pNP_fit$coefficients[1]
+b <- pNP_fit$coefficients[1] #y = mx +b
 m <- pNP_fit$coefficients[2]
 
 # Now look at data
 dat2 <- resbind %>%
-  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|buffer", variable)) # Filter out variables you don't want
+  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|NA", variable)) # Filter out variables you don't want
 
 dat3 <- dat2 %>%
   dplyr::mutate(nmols_pNP = (value - b)/m) %>%
@@ -124,7 +122,7 @@ pal <- colorRampPalette(brewer.pal(8,"Set1"))(8)
 pal2 <- c("gray80", "black", "dodgerblue", "goldenrod",  pal[c(1, 3:5, 8)], "blue", "gold1", distinctColorPalette(60))
 pal2
 
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_without_errorbars.pdf"), width = 13, height = 8)
+pdf(paste0("output/", ddmmyy, "_", enzym, "_without_errorbars.pdf"), width = 13, height = 8)
 pl <- ggplot(dat3, aes(x=time, y=mean, color=variable)) +
   geom_point() +
   labs(y = "nmol 4NP produced", x = "Time (minutes)") +
@@ -144,7 +142,7 @@ pl
 dev.off()
 pl
 
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_with_errorbars.pdf"), width = 14, height = 8)
+pdf(paste0("output/", ddmmyy, "_", enzym, "_with_errorbars.pdf"), width = 14, height = 8)
 pl <- ggplot(dat3, aes(x=time, y=mean, color=variable)) +
   geom_point() +
   labs(y = "nmol 4NP produced", x = "Time (minutes)") +
@@ -209,16 +207,16 @@ resll <- do.call(rbind.data.frame, res)
 
 # Find max slope for each organism
 resmax <- resl %>%
-  dplyr::filter(r2 >= 0.9) %>% # make sure R^2 is above or equal to 0.9
+  #dplyr::filter(r2 >= 0.9) %>% # make sure R^2 is above or equal to 0.9
   group_by(org) %>%
-  summarise_each(funs(max_slope = max), slope) %>%
-  dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
+  summarise_each(funs(max_slope = max), slope) #%>%
+#dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
 resmax
 
 # Merge with the original dataset
 slope_merg <- resmax %>%
   inner_join(., resl, by = "org") %>%
-  dplyr::filter(r2 >= 0.9) %>% 
+  #dplyr::filter(r2 >= 0.9) %>% 
   group_by(org) %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::select(org, max_slope, r2, intercept)
@@ -228,8 +226,8 @@ merg_all <- slope_merg %>%
   left_join(., a, by = c("org" = "variable")) %>% # to exclude inactive ones
   dplyr::mutate(winners = case_when(is.na(max_slope) ~ " inactive",
                                     TRUE ~ org))
- 
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_slopes_plotted.pdf"), width = 13, height = 8)
+
+pdf(paste0("output/", ddmmyy, "_", enzym, "_slopes_plotted.pdf"), width = 13, height = 8)
 pl <- ggplot(merg_all,  aes(x = minutes, y = mean, color = winners)) + 
   geom_point(alpha = ifelse(merg_all$winners == " inactive", 0.2, 1)) +
   geom_abline(slope = unique(merg_all$max_slope), intercept = unique(merg_all$intercept), color = pal2[1:length(unique(merg_all$max_slope))]) +
@@ -253,5 +251,4 @@ pl
 # Visually assess results and remove any that look strange
 slope_final <- slope_merg[order(slope_merg$max_slope, decreasing = T),]
 slope_final
-write_csv(slope_final, paste0("output/", yyyymmdd, "_", enzym, "_all_data_calculated_slopes.csv"))
-
+write_csv(slope_final, paste0("output/", ddmmyy, "_", enzym, "_all_data_calculated_slopes.csv"))
