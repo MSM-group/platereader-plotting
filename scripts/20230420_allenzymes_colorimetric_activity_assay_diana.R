@@ -29,7 +29,7 @@ ddmmyy <- "20230420"
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", ddmmyy, "/"))
-file_path <- list.files(folder_path, pattern = Template, full.names = T)
+file_path <- list.files(folder_path, pattern = "Template", full.names = T)
 
 temp <- read_excel(file_path) %>%
   janitor::clean_names() %>%
@@ -157,7 +157,7 @@ pl <- ggplot(dat3, aes(x=time, y=mean, color=variable)) +
         legend.position="right") + 
   guides(shape = guide_legend(override.aes = list(size = 10))) +
   scale_color_manual(values=pal2) +
-  ylim(-10, 70)
+  ylim(-10, 10)
 pl
 dev.off()
 pl
@@ -252,3 +252,4 @@ pl
 slope_final <- slope_merg[order(slope_merg$max_slope, decreasing = T),]
 slope_final
 write_csv(slope_final, paste0("output/", ddmmyy, "_", enzym, "_all_data_calculated_slopes.csv"))
+
