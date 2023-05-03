@@ -25,7 +25,7 @@ library("hms")
 
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "allenzymes" # change this for p055 etc.
-ddmmyy <- "20230420"
+ddmmyy <- "20230502"
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", ddmmyy, "/"))
@@ -41,12 +41,13 @@ temp # lots of NAs are ok
 
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, ""), pattern = enzym, full.names = T) 
- tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
+tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|Template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right
 
 # Split out the files into three separate files for each triplicate
 # NOTE: this is specific only for files where triplicates were done on the same plate
-tma <- read_excel(tmafils, range = "B29:CU90", col_types = c("date", rep("numeric", 97)))
+#check if lines correspond to the excel file
+tma <- read_excel(tmafils, range = "B28:CU89", col_types = c("date", rep("numeric", 97)))
 oldnam <- as.vector(t(colnames(tma))) 
 oldnam
 newnam <- c("time", "temperature_c", paste0(temp))
@@ -110,7 +111,7 @@ m <- pNP_fit$coefficients[2]
 
 # Now look at data
 dat2 <- resbind %>%
-  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|NA", variable)) # Filter out variables you don't want
+  dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|FT1|CL|NA", variable)) # Filter out variables you don't want
 
 dat3 <- dat2 %>%
   dplyr::mutate(nmols_pNP = (value - b)/m) %>%
@@ -125,16 +126,16 @@ pal2
 pdf(paste0("output/", ddmmyy, "_", enzym, "_without_errorbars.pdf"), width = 13, height = 8)
 pl <- ggplot(dat3, aes(x=time, y=mean, color=variable)) +
   geom_point() +
-  labs(y = "nmol 4NP produced", x = "Time (minutes)") +http://127.0.0.1:42349/graphics/plot_zoom_png?width=1680&height=987
-  # geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6)+
-  theme(legend.title=element_blank(), axis.line=element_line(color="black"),
-        panel.grid.major=element_blank(),
-        panel.grid.minor=element_blank(),
-        panel.border=element_blank(),
-        panel.background=element_blank(),
-        text = element_text(size = 20),
-        legend.key= element_rect(fill=NA, color=NA),
-        legend.position="right") + 
+  labs(y = "nmol 4NP produced", x = "Time (minutes)") +
+# geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6)+
+theme(legend.title=element_blank(), axis.line=element_line(color="black"),
+      panel.grid.major=element_blank(),
+      panel.grid.minor=element_blank(),
+      panel.border=element_blank(),
+      panel.background=element_blank(),
+      text = element_text(size = 20),
+      legend.key= element_rect(fill=NA, color=NA),
+      legend.position="right") + 
   guides(shape = guide_legend(override.aes = list(size = 10))) +
   scale_color_manual(values=pal2) +
   ylim(-10, 70)
@@ -209,8 +210,8 @@ resll <- do.call(rbind.data.frame, res)
 resmax <- resl %>%
   #dplyr::filter(r2 >= 0.9) %>% # make sure R^2 is above or equal to 0.9
   group_by(org) %>%
-  summarise_each(funs(max_slope = max), slope) #%>%
-#dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
+  summarise_each(funs(max_slope = max), slope) %>%
+dplyr::filter(max_slope > 1.3 ) # SET activity threshold of 0.1
 resmax
 
 # Merge with the original dataset

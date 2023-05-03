@@ -25,7 +25,7 @@ library("hms")
 
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "allenzymes" # change this for p055 etc.
-ddmmyy <- "20230420"
+ddmmyy <- "20230424"
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", ddmmyy, "/"))
@@ -41,7 +41,7 @@ temp # lots of NAs are ok
 
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, ""), pattern = enzym, full.names = T) 
- tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
+tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right
 
 # Split out the files into three separate files for each triplicate
@@ -125,7 +125,7 @@ pal2
 pdf(paste0("output/", ddmmyy, "_", enzym, "_without_errorbars.pdf"), width = 13, height = 8)
 pl <- ggplot(dat3, aes(x=time, y=mean, color=variable)) +
   geom_point() +
-  labs(y = "nmol 4NP produced", x = "Time (minutes)") +http://127.0.0.1:42349/graphics/plot_zoom_png?width=1680&height=987
+  labs(y = "nmol 4NP produced", x = "Time (minutes)") +
   # geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6)+
   theme(legend.title=element_blank(), axis.line=element_line(color="black"),
         panel.grid.major=element_blank(),
@@ -230,8 +230,8 @@ merg_all <- slope_merg %>%
 pdf(paste0("output/", ddmmyy, "_", enzym, "_slopes_plotted.pdf"), width = 13, height = 8)
 pl <- ggplot(merg_all,  aes(x = minutes, y = mean, color = winners)) + 
   geom_point(alpha = ifelse(merg_all$winners == " inactive", 0.2, 1)) +
-  geom_abline(slope = unique(merg_all$max_slope), intercept = unique(merg_all$intercept), color = pal2[1:length(unique(merg_all$max_slope))]) +
-  labs(y = "nmol 4NP produced", x = "Time (minutes)") +
+  #geom_abline(slope = unique(merg_all$max_slope), intercept = unique(merg_all$intercept), aes(color = winners)) +
+  labs(y = "nmol 4NP produced", x = "Time (minutes)")+
   theme(legend.title=element_blank(), axis.line=element_line(color="black"),
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
