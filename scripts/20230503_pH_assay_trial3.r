@@ -10,12 +10,12 @@ library("randomcoloR")
 library("hms")
 
 # Set the substrate (compound) and the date for enzyme activity screening
-enzym <- "trial2_p55_pH" 
+enzym <- "trial3_p55_pH" 
 yyyymmdd <- "20230503"
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", yyyymmdd, "/"))
-file_path <- list.files(folder_path, pattern = "trial2_p55_Platelayout", full.names = T)
+file_path <- list.files(folder_path, pattern = "trial3_p55_Platelayout", full.names = T)
 file_path <- file_path[!grepl(pattern="~",file_path)]
 file_path
 temp <- read_excel(file_path) %>%
@@ -25,9 +25,8 @@ temp <- read_excel(file_path) %>%
   t %>%
   as.vector()
 temp # lots of NAs are ok
-temp[72:84] <- paste0("pH_85_", temp[72:84])
-temp[85:96] <- paste0("pH_95_", temp[85:96])
-
+temp[61:72] <- paste0("pH10_", temp[61:72])
+temp
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, "/"), pattern = enzym, full.names = T) 
 tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
@@ -40,6 +39,7 @@ newnam <- c("time", "temperature_c", paste0(temp))
 newnam
 template_check <- bind_cols(oldnam, newnam)
 template_check # compares template to platereader column names
+
 
 # If the names match
 colnames(tma) <- make.unique(newnam) # set the column names
@@ -66,40 +66,17 @@ dat3 <- dat2 %>%
   group_by(variable, time) %>%
   summarise_each(funs(mean, sd), value)  # calculate mean activity
 
-
 # Custom color palette
 pal <- colorRampPalette(brewer.pal(8,"Set1"))(8) 
 pal2 <- c("gray80", "black", "dodgerblue", "goldenrod",  pal[c(1, 3:5, 8)], "blue", "gold1", distinctColorPalette(60))
 pal2
 
-
-# pH6
+# pH10
 dat4 <- tibble(dat3) %>%
-  dplyr::filter(grepl("pH_85", variable))
+  dplyr::filter(grepl("pH10_", variable))
 dat4
 
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_pH85.pdf"),width = 9, height = 5)
-pl <- ggplot(dat4, aes(x=time, y=mean, color=variable)) +
-  geom_point() +
-  labs(y = "Absorbance (410 nm)", x = "Time (minutes)") +
-  # geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6)+
-  theme(legend.title=element_blank(), axis.line=element_line(color="black"),
-        panel.grid.major=element_blank(),
-        panel.grid.minor=element_blank(),
-        panel.border=element_blank(),
-        panel.background=element_blank(),
-        text = element_text(size = 20),
-        legend.key= element_rect(fill=NA, color=NA),
-        legend.position="right") + 
-  guides(shape = guide_legend(override.aes = list(size = 10))) +
-  scale_color_manual(values=pal2)
-pl
-dev.off()
-
-# p9.5
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_pH95.pdf"), width = 9, height = 5)
-dat4 <- tibble(dat3) %>%
-  dplyr::filter(grepl("pH_95", variable))
+pdf(paste0("output/", yyyymmdd, "_", enzym, "_pH10.pdf"),width = 9, height = 5)
 pl <- ggplot(dat4, aes(x=time, y=mean, color=variable)) +
   geom_point() +
   labs(y = "Absorbance (410 nm)", x = "Time (minutes)") +
@@ -156,9 +133,6 @@ for(i in 1:length(orgs)) {
                                               function(x) slopes(tmp[x:(x + windowsize),])))
 }
 
-
-!duplicated(sequence)
-
 names(res) <- orgs
 resl <- plyr::ldply(res, data.frame)
 resll <- do.call(rbind.data.frame, res)
@@ -171,6 +145,7 @@ resmax <- resl %>%
   dplyr::filter(max_slope > 0.0 ) # SET activity threshold of 0.1
 resmax
 write_csv(resmax, paste0("output/", yyyymmdd, "_", enzym, "_slope_differences.csv"))
+
 # Merge with the original dataset
 slope_merg <- resmax %>%
   inner_join(., resl, by = "org") %>%
@@ -179,4 +154,3 @@ slope_merg <- resmax %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::select(org, max_slope, r2, intercept)
 
-          
