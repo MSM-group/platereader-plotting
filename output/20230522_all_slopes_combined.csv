@@ -1,4 +1,10 @@
 date,filename,org,max_slope,r2,substrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,DH_bio2,4.4159,0.9997,butyrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,DH_bio3,4.4098,0.9901,butyrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,DH_bio1,4.1145,0.997,butyrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,p006_bio2,1.7787,1,butyrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,p006_bio3,1.5963,0.9999,butyrate
+20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,p006_bio1,1.246,0.9995,butyrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,p082_bio3,0.2632,0.9976,butyrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,Asti_bio1,0.2565,0.9887,butyrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,Asti_bio2,0.2529,0.9935,butyrate
@@ -23,6 +29,10 @@ date,filename,org,max_slope,r2,substrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,N41_bio2,0.1118,0.9536,butyrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,EV_bio1,0.0969,0.9942,butyrate
 20230302,output//20230302_64DHH_replication_4NP_butyrate_all_data_calculated_slopes.csv,p071_bio1,0.088,0.995,butyrate
+20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,DH_bio3,2.7934,0.9831,butyrate
+20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,DH_bio1,1.5619,0.9561,butyrate
+20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,DH_bio2,1.0746,0.9335,butyrate
+20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,p083_bio3,0.787,0.9844,butyrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,p017_bio2,0.6452,0.994,butyrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,p024_bio3,0.5957,0.931,butyrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,p095_bio3,0.5808,0.999,butyrate
@@ -48,6 +58,12 @@ date,filename,org,max_slope,r2,substrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,EV_bio1,0.2665,0.9941,butyrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,EV_bio2,0.2063,0.9111,butyrate
 20230309,output//20230309_64DHH_replication_4NP_butyrate_2_all_data_calculated_slopes.csv,p095_bio2,0.1117,0.9293,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,DH_bio3,1.8125,0.9596,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p089_bio1,1.8121,0.9988,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p089_bio2,1.8088,0.9995,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p089_bio3,1.7018,0.9999,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,DH_bio2,1.5929,0.9624,butyrate
+20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,DH_bio1,1.2749,0.9495,butyrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p064_bio3,0.152,0.9986,butyrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p054_bio3,0.0999,0.9994,butyrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p019_bio3,0.0967,0.9105,butyrate
@@ -72,6 +88,12 @@ date,filename,org,max_slope,r2,substrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p045_bio1,0.0501,0.9984,butyrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p045_bio3,0.047,0.9996,butyrate
 20230323,output//20230323_64DHH_replication_4NP_butyrate_3_all_data_calculated_slopes.csv,p019_bio2,0.0465,0.9887,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p028_2,3.6481,0.9923,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p028_1,3.4228,0.993,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p028_3,3.4216,0.996,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,DH_2,1.9664,0.9901,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,DH_1,1.9248,0.9875,butyrate
+20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,DH_3,1.8294,0.998,butyrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p041_3,0.3949,0.9595,butyrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p093_2,0.342,0.9974,butyrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p065_1,0.3267,0.9985,butyrate
@@ -131,6 +153,10 @@ date,filename,org,max_slope,r2,substrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,EV_2,0.0584,0.9939,butyrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p090_3,0.0577,0.9996,butyrate
 20230330,output//20230330_64DHH_replication_4NP_butyrate_4_all_data_calculated_slopes.csv,p090_2,0.0554,0.9975,butyrate
+20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,DH,2.142,0.9907,butyrate
+20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p055,2.1098,1,butyrate
+20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p069,1.9064,0.9998,butyrate
+20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p006,1.4921,0.9999,butyrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p007,0.559,0.9989,butyrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p075,0.3507,0.9999,butyrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p066,0.2476,0.9993,butyrate
@@ -152,6 +178,13 @@ date,filename,org,max_slope,r2,substrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p044,0.1108,0.9966,butyrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,EV,0.1084,0.9944,butyrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_butyrate_5_all_data_calculated_slopes.csv,p004,0.1009,0.9826,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,DH_1,5.4491,0.9165,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p069_bio3,3.043,0.9999,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p069_bio2,3.0222,0.9989,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p069_bio1,2.8443,0.9997,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p006_bio1,1.6503,0.9999,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p006_bio3,1.6059,1,butyrate
+20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p006_bio2,1.3412,0.9999,butyrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p075_bio1,0.7458,1,butyrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p007_bio3,0.7162,1,butyrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p075_bio3,0.6949,1,butyrate
@@ -165,6 +198,9 @@ date,filename,org,max_slope,r2,substrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p016_bio2,0.128,0.9992,butyrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,p022_bio1,0.1246,0.9988,butyrate
 20230421,output//20230421_20230421_64DHH_replication_4NP_butyrate_6_all_data_calculated_slopes.csv,EV_1,0.108,0.9999,butyrate
+20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,DH_bio2,2.748,0.9936,trimethylacetate
+20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,DH_bio1,2.3807,0.9816,trimethylacetate
+20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,DH_bio3,2.2686,0.9222,trimethylacetate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,p012_bio2,0.3155,0.98740000000000006,trimethylacetate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,Asti_bio2,0.295,0.9585,trimethylacetate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,p006_bio3,0.2303,0.9888,trimethylacetate
@@ -188,6 +224,7 @@ date,filename,org,max_slope,r2,substrate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,p071_bio1,0.0283,0.92490000000000006,trimethylacetate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,EV_bio1,0.0282,0.9095,trimethylacetate
 20230302,output//20230302_64DHH_replication_4NP_trimethylacetate_all_data_calculated_slopes.csv,N41_bio1,0.021,0.9581,trimethylacetate
+20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,DH_bio3,3.4583,0.9354,trimethylacetate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,p024_bio3,0.4238,0.9965,trimethylacetate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,p079_bio2,0.3686,0.9895,trimethylacetate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,p083_bio2,0.3394,0.9902,trimethylacetate
@@ -217,6 +254,9 @@ date,filename,org,max_slope,r2,substrate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,p017_bio1,0.1592,0.9988,trimethylacetate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,p079_bio1,0.1333,0.9985,trimethylacetate
 20230309,output//20230309_64DHH_replication_4NP_trimethylacetate_2_all_data_calculated_slopes.csv,DH_bio1,0.1291,0.9966,trimethylacetate
+20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,DH_bio3,2.5328,0.9965,trimethylacetate
+20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,DH_bio1,2.2905,0.9994,trimethylacetate
+20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,DH_bio2,2.0999,0.997,trimethylacetate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,p019_bio2,0.3745,0.9341,trimethylacetate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,p064_bio2,0.3134,0.9711,trimethylacetate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,p089_bio1,0.2823,0.9101,trimethylacetate
@@ -241,6 +281,9 @@ date,filename,org,max_slope,r2,substrate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,p019_bio1,0.0592,0.9665,trimethylacetate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,EV_bio2,0.0545,0.9079,trimethylacetate
 20230323,output//20230323_64DHH_replication_4NP_trimethylacetate_3_all_data_calculated_slopes.csv,EV_bio1,0.0499,0.9612,trimethylacetate
+20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,DH_3,2.0909,0.9928,trimethylacetate
+20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,DH_1,2.0304,0.9984,trimethylacetate
+20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,DH_2,1.9879,0.9905,trimethylacetate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p076_3,0.2604,0.9185,trimethylacetate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p028_1,0.26,0.9424,trimethylacetate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p080_1,0.26,0.9282,trimethylacetate
@@ -257,6 +300,7 @@ date,filename,org,max_slope,r2,substrate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p081_1,0.031,0.9214,trimethylacetate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p020_2,-0.0438,0.9602,trimethylacetate
 20230330,output//20230330_64DHH_replication_4NP_trimethylacetate_4_all_data_calculated_slopes.csv,p065_3,-0.142,0.9518,trimethylacetate
+20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,DH,1.7543,0.998,trimethylacetate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p055,0.4686,0.9868,trimethylacetate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p022,0.2846,0.9565,trimethylacetate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p016,0.28,0.971,trimethylacetate
@@ -277,6 +321,7 @@ date,filename,org,max_slope,r2,substrate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p058,0.121,0.9644,trimethylacetate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p044,0.0793,0.9101,trimethylacetate
 20230406,output//20230406_20230406_64DHH_replication_4NP_trimethylacetate_5_all_data_calculated_slopes.csv,p075,0.0721,0.9105,trimethylacetate
+20230421,output//20230421_20230421_64DHH_replication_4NP_trimethylacetate_6_all_data_calculated_slopes.csv,DH_1,3.6253,0.989,trimethylacetate
 20230421,output//20230421_20230421_64DHH_replication_4NP_trimethylacetate_6_all_data_calculated_slopes.csv,p007_bio2,0.2147,0.9782,trimethylacetate
 20230421,output//20230421_20230421_64DHH_replication_4NP_trimethylacetate_6_all_data_calculated_slopes.csv,p069_bio3,0.1445,0.9751,trimethylacetate
 20230421,output//20230421_20230421_64DHH_replication_4NP_trimethylacetate_6_all_data_calculated_slopes.csv,p006_bio1,0.1326,0.9765,trimethylacetate

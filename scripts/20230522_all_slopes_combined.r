@@ -28,7 +28,6 @@ tma_tri # now includes 20230421
 
 # Make a boxplot of the two
 tma_comb <- bind_rows(tma_but_raw, tma_tri_raw) %>%
-  dplyr::filter(max_slope < 0.75) %>%
   dplyr::mutate(substrate = ifelse(grepl("butyrate", filename), "butyrate", "trimethylacetate"))
 table(tma_comb$substrate)
 
