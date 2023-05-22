@@ -39,3 +39,4 @@ ggplot(tma_comb, aes(x = substrate, y = max_slope)) +
              outlier.size=2, notch=FALSE) +
   theme_pubr() +
   geom_text_repel(data = subset(tma_comb, max_slope > 0.2), aes(label = org))
+write_csv(tma_comb, "output/all_slopes_combined.csv")
