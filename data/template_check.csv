@@ -1,99 +1,99 @@
 ...1,...2
 Time,time
-T° 380,temperature_c
-A1,NA
-A2,NA
-A3,NA
-A4,NA
-A5,NA
-A6,NA
-A7,Ochro_pure_refrozen_1_enzyme_substrate
-A8,Ochro_pure_refrozen_1_enzyme_substrate
-A9,Ochro_pure_refrozen_1_enzyme_substrate
-A10,Ochrobactrum_pure_refrozen_1_boiled_control_substrate
-A11,Ochrobactrum_pure_refrozen_1_boiled_control_substrate
-A12,Ochrobactrum_pure_refrozen_1_boiled_control_substrate
-B1,NA
-B2,NA
-B3,NA
-B4,NA
-B5,NA
-B6,NA
-B7,Ochrobactrum_FT1_substrate
-B8,Ochrobactrum_FT1_substrate
-B9,Ochrobactrum_FT1_substrate
-B10,Ochrobactrum_FT1_boiled_control_substrate
-B11,Ochrobactrum_FT1_boiled_control_substrate
-B12,Ochrobactrum_FT1_boiled_control_substrate
-C1,NA
-C2,NA
-C3,NA
-C4,NA
-C5,NA
-C6,NA
-C7,pcdf1_pure_substrate
-C8,pcdf1_pure_substrate
-C9,pcdf1_pure_substrate
-C10,pcdf1_pure_boiled_control_substrate
-C11,pcdf1_pure_boiled_control_substrate
-C12,pcdf1_pure_boiled_control_substrate
-D1,NA
-D2,NA
-D3,NA
-D4,NA
-D5,NA
-D6,NA
-D7,pcdf1_FT1_substrate
-D8,pcdf1_FT1_substrate
-D9,pcdf1_FT1_substrate
-D10,pcdf1_FT1_boiled_control_substrate
-D11,pcdf1_FT1_boiled_control_substrate
-D12,pcdf1_FT1_boiled_control_substrate
-E1,NA
-E2,NA
-E3,NA
-E4,NA
-E5,NA
-E6,NA
-E7,ANSA_pure_substrate
-E8,ANSA_pure_substrate
-E9,ANSA_pure_substrate
-E10,ANSA_pure_boiled_control_substrate
-E11,ANSA_pure_boiled_control_substrate
-E12,ANSA_pure_boiled_control_substrate
-F1,NA
-F2,NA
-F3,NA
-F4,NA
-F5,NA
-F6,NA
-F7,ANSA_CL_substrate
-F8,ANSA_CL_substrate
-F9,ANSA_CL_substrate
-F10,ANSA_CL_boiled_control_substrate
-F11,ANSA_CL_boiled_control_substrate
-F12,ANSA_CL_boiled_control_substrate
-G1,NA
-G2,NA
-G3,NA
-G4,buffer(Tris-HCl)
-G5,buffer(Tris-HCl)
-G6,buffer(Tris-HCl)
-G7,Tris-HCl + 20uL TNG + substrate
-G8,Tris-HCl + 20uL TNG + substrate
-G9,Tris-HCl + 20uL TNG + substrate
-G10,Tris-HCl + 10uL TNG + substrate
-G11,Tris-HCl + 10uL TNG + substrate
-G12,Tris-HCl + 10uL TNG + substrate
-H1,NA
-H2,NA
-H3,NA
-H4,NA
-H5,NA
-H6,NA
-H7,stdcurve_0
-H8,stdcurve_1
-H9,stdcurve_2
-H10,stdcurve_3
-H11,stdcurve_4
-H12,stdcurve_5
+T° 410,temperature_c
+A1,Ochrobactrum_pure_4NPbutyrate
+A2,Ochrobactrum_pure_4NPbutyrate
+A3,Ochrobactrum_pure_4NPbutyrate
+A4,Ochrobactrum_pure_boiled_control_4NPbutyrate
+A5,Ochrobactrum_pure_boiled_control_4NPbutyrate
+A6,Ochrobactrum_pure_boiled_control_4NPbutyrate
+A7,Ochrobactrum_pure_4NPtrimethylacetate
+A8,Ochrobactrum_pure_4NPtrimethylacetate
+A9,Ochrobactrum_pure_4NPtrimethylacetate
+A10,Ochrobactrum_pure_boiled_control_4NPtrimethylacetate
+A11,Ochrobactrum_pure_boiled_control_4NPtrimethylacetate
+A12,Ochrobactrum_pure_boiled_control_4NPtrimethylacetate
+B1,ANSA_pure_4NPbutyrate
+B2,ANSA_pure_4NPbutyrate
+B3,ANSA_pure_4NPbutyrate
+B4,ANSA_pure_boiled_control_4NPbutyrate
+B5,ANSA_pure_boiled_control_4NPbutyrate
+B6,ANSA_pure_boiled_control_4NPbutyrate
+B7,ANSA_pure_4NPtrimethylacetate
+B8,ANSA_pure_4NPtrimethylacetate
+B9,ANSA_pure_4NPtrimethylacetate
+B10,ANSA_pure_boiled_control_4NPtrimethylacetate
+B11,ANSA_pure_boiled_control_4NPtrimethylacetate
+B12,ANSA_pure_boiled_control_4NPtrimethylacetate
+C1,ANSA_CL_4NPbutyrate
+C2,ANSA_CL_4NPbutyrate
+C3,ANSA_CL_4NPbutyrate
+C4,ANSA_CL_boiled_control_4NPbutyrate
+C5,ANSA_CL_boiled_control_4NPbutyrate
+C6,ANSA_CL_boiled_control_4NPbutyrate
+C7,ANSA_CL_4NPtrimethylacetate
+C8,ANSA_CL_4NPtrimethylacetate
+C9,ANSA_CL_4NPtrimethylacetate
+C10,ANSA_CL_boiled_control_4NPtrimethylacetate
+C11,ANSA_CL_boiled_control_4NPtrimethylacetate
+C12,ANSA_CL_boiled_control_4NPtrimethylacetate
+D1,Lacticaseib_pure_4NPbutyrate
+D2,Lacticaseib_pure_4NPbutyrate
+D3,Lacticaseib_pure_4NPbutyrate
+D4,Lacticaseib_pure_boiled_control_4NPbutyrate
+D5,Lacticaseib_pure_boiled_control_4NPbutyrate
+D6,Lacticaseib_pure_boiled_control_4NPbutyrate
+D7,Lacticaseib_pure_4NPtrimethylacetate
+D8,Lacticaseib_pure_4NPtrimethylacetate
+D9,Lacticaseib_pure_4NPtrimethylacetate
+D10,Lacticaseib_pure_boiled_control_4NPtrimethylacetate
+D11,Lacticaseib_pure_boiled_control_4NPtrimethylacetate
+D12,Lacticaseib_pure_boiled_control_4NPtrimethylacetate
+E1,Cory_FT1_4NPbutyrate
+E2,Cory_FT1_4NPbutyrate
+E3,Cory_FT1_4NPbutyrate
+E4,Cory_FT1_boiled_control_4NPbutyrate
+E5,Cory_FT1_boiled_control_4NPbutyrate
+E6,Cory_FT1_boiled_control_4NPbutyrate
+E7,Cory_FT1_4NPtrimethylacetate
+E8,Cory_FT1_4NPtrimethylacetate
+E9,Cory_FT1_4NPtrimethylacetate
+E10,Cory_FT1_boiled_control_4NPtrimethylacetate
+E11,Cory_FT1_boiled_control_4NPtrimethylacetate
+E12,Cory_FT1_boiled_control_4NPtrimethylacetate
+F1,Gordonia_FT1_4NPbutyrate
+F2,Gordonia_FT1_4NPbutyrate
+F3,Gordonia_FT1_4NPbutyrate
+F4,Gordonia_FT1_boiled_control_4NPbutyrate
+F5,Gordonia_FT1_boiled_control_4NPbutyrate
+F6,Gordonia_FT1_boiled_control_4NPbutyrate
+F7,Gordonia_FT1_4NPtrimethylacetate
+F8,Gordonia_FT1_4NPtrimethylacetate
+F9,Gordonia_FT1_4NPtrimethylacetate
+F10,Gordonia_FT1_boiled_control_4NPtrimethylacetate
+F11,Gordonia_FT1_boiled_control_4NPtrimethylacetate
+F12,Gordonia_FT1_boiled_control_4NPtrimethylacetate
+G1,Tris-HCl + TNG(10) + 4NPbutyrate
+G2,Tris-HCl + TNG(10) + 4NPbutyrate
+G3,Tris-HCl + TNG(10) + 4NPbutyrate
+G4,Tris-HCl + TNG(20) + 4NPbutyrate
+G5,Tris-HCl + TNG(20) + 4NPbutyrate
+G6,Tris-HCl + TNG(20) + 4NPbutyrate
+G7,Tris-HCl + TNG(10) + 4NPtrimethylacetate
+G8,Tris-HCl + TNG(10) + 4NPtrimethylacetate
+G9,Tris-HCl + TNG(10) + 4NPtrimethylacetate
+G10,Tris-HCl + TNG(20) + 4NPtrimethylacetate
+G11,Tris-HCl + TNG(20) + 4NPtrimethylacetate
+G12,Tris-HCl + TNG(20) + 4NPtrimethylacetate
+H1,stdcurve_0
+H2,stdcurve_1
+H3,stdcurve_2
+H4,stdcurve_3
+H5,stdcurve_4
+H6,stdcurve_5
+H7,NA
+H8,NA
+H9,NA
+H10,buffer(Tris-HCl)
+H11,buffer(Tris-HCl)
+H12,buffer(Tris-HCl)
