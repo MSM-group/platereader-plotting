@@ -50,3 +50,5 @@ pl <- ggplot(merg_summ,  aes(x = temperature, y = mean)) +
   theme_pubr()
 pl
 dev.off()
+
+ggsave(plot = pl, filename = paste0("output/", yyyymmdd, "_", enzym, "temp_stability_combined_final_graph.png"), width = 8, height = 3)
