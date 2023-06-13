@@ -10,12 +10,12 @@ library("ggpubr")
 
 # Set the substrate (compound) and the date for enzyme activity screening
 rm(list = ls())
-enzym <- "degrees" 
+enzym <- "degrees_all_data" 
 yyyymmdd <- "20230605"
 
 # Read in the results
 files <- list.files("output/", pattern = enzym, full.names = T)
-
+files
 readin <- tibble(filename = files) %>%
   mutate(file_contents = purrr::map(filename,          
                                     ~ read_csv(file.path(.), col_names = T)) # a new data column
