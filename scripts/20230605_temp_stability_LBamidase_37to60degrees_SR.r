@@ -134,6 +134,28 @@ a <- dat3 %>%
   dplyr::select(variable, minutes, nmols_pNP)
 a
 
+pal <- colorRampPalette(brewer.pal(8,"Set1"))(8) 
+pal2 <- c("gray80", "black", "dodgerblue", "goldenrod",  pal[c(1, 3:5, 8)], "blue", "gold1", distinctColorPalette(60))
+pal2
+pdf(paste0("output/", ddmmyy, "_", enzym, "_with_errorbars.pdf"), width = 14, height = 8)
+pl <- ggplot(dat3, aes(x=time, y=nmols_pNP, color=variable)) +
+  geom_point() +
+  labs(y = "nmol 4NP produced", x = "Time (minutes)") +
+  theme(legend.title=element_blank(), axis.line=element_line(color="black"),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.border=element_blank(),
+        panel.background=element_blank(),
+        text = element_text(size = 20),
+        legend.key= element_rect(fill=NA, color=NA),
+        legend.position="right") + 
+  guides(shape = guide_legend(override.aes = list(size = 10))) +
+  scale_color_manual(values=pal2) +
+  ylim(-10, 70)
+pl
+dev.off()
+pl
+
 ## Function that calculates slopes
 slopes <- function(d) { 
   m <- lm(nmols_pNP ~ minutes, as.data.frame(d, stringsAsFactors = F))
