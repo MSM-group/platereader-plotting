@@ -1,99 +1,99 @@
 ...1,...2
-Time,time
-T° 410,temperature_c
-A1,NA
-A2,NA
-A3,NA
-A4,NA
-A5,NA
-A6,NA
-A7,Lacticasei + 4NP butyrate
-A8,Lacticasei + 4NP butyrate
-A9,Lacticasei + 4NP butyrate
-A10,Lacticasei_boiled_control_4NPbutyrate
-A11,Lacticasei_boiled_control_4NPbutyrate
-A12,Lacticasei_boiled_control_4NPbutyrate
-B1,NA
-B2,NA
-B3,NA
-B4,NA
-B5,NA
-B6,NA
-B7,Lacticasei biotic control
-B8,Lacticasei biotic control
-B9,Lacticasei biotic control
-B10,Tris + 4NP butyrate
-B11,Tris + 4NP butyrate
-B12,Tris + 4NP butyrate
-C1,NA
-C2,NA
-C3,NA
-C4,NA
-C5,NA
-C6,NA
-C7,stdcurve_0
-C8,stdcurve_1
-C9,stdcurve_2
-C10,stdcurve_3
-C11,stdcurve_4
-C12,stdcurve_5
-D1,NA
-D2,NA
-D3,NA
-D4,NA
-D5,NA
-D6,NA
-D7,Lacticasei + 4NP trimethylacetate
-D8,Lacticasei + 4NP trimethylacetate
-D9,Lacticasei + 4NP trimethylacetate
-D10,Lacticasei_boiled_control_4NPtrimethylacetate
-D11,Lacticasei_boiled_control_4NPtrimethylacetate
-D12,Lacticasei_boiled_control_4NPtrimethylacetate
-E1,NA
-E2,NA
-E3,NA
-E4,NA
-E5,NA
-E6,NA
-E7,buffer_(Tris)
-E8,buffer_(Tris)
-E9,buffer_(Tris)
-E10,Tris + 4NP trimethylacetate
-E11,Tris + 4NP trimethylacetate
-E12,Tris + 4NP trimethylacetate
-F1,NA
-F2,NA
-F3,NA
-F4,NA
-F5,NA
-F6,NA
-F7,elution buffer 500mM imidazole+ 4NP butyrate
-F8,elution buffer 500mM imidazole+ 4NP butyrate
-F9,elution buffer 500mM imidazole+ 4NP butyrate
-F10,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F11,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F12,elution buffer 500mM imidazole+ 4NP trimethylacetate
-G1,NA
-G2,NA
-G3,NA
-G4,NA
-G5,NA
-G6,NA
-G7,NA
-G8,NA
-G9,NA
-G10,NA
-G11,NA
-G12,NA
-H1,NA
-H2,NA
-H3,NA
-H4,NA
-H5,NA
-H6,NA
-H7,NA
-H8,NA
-H9,NA
-H10,NA
-H11,NA
-H12,NA
+...1,time
+...2,temperature_c
+...3,stdcurve_0
+...4,stdcurve_1
+...5,stdcurve_2
+...6,stdcurve_3
+...7,stdcurve_4
+...8,stdcurve_5
+...9,NA
+...10,NA
+...11,NA
+...12,NA
+...13,NA
+...14,NA
+...15,p055_rep1_37°C
+...16,p055_rep2_37°C
+...17,p055_rep3_37°C
+...18,p055_rep1_50.6°C
+...19,p055_rep2_50.6°C
+...20,p055_rep3_50.6°C
+...21,NA
+...22,NA
+...23,NA
+...24,NA
+...25,NA
+...26,NA
+...27,p055_rep1_40°C
+...28,p055_rep2_40°C
+...29,p055_rep3_40°C
+...30,p055_rep1_52°C
+...31,p055_rep2_52°C
+...32,p055_rep3_52°C
+...33,NA
+...34,NA
+...35,NA
+...36,NA
+...37,NA
+...38,NA
+...39,p055_rep1_43.6°C
+...40,p055_rep2_43.6°C
+...41,p055_rep3_43.6°C
+...42,NA
+...43,NA
+...44,NA
+...45,NA
+...46,NA
+...47,NA
+...48,NA
+...49,NA
+...50,NA
+...51,p055_rep1_47.2°C
+...52,p055_rep2_47.2°C
+...53,p055_rep3_47.2°C
+...54,NA
+...55,NA
+...56,NA
+...57,NA
+...58,NA
+...59,NA
+...60,NA
+...61,NA
+...62,NA
+...63,tris-HCL_buffer_rep1
+...64,tris-HCL_buffer_rep2
+...65,tris-HCL_buffer_rep3
+...66,NA
+...67,NA
+...68,NA
+...69,NA
+...70,NA
+...71,NA
+...72,NA
+...73,NA
+...74,NA
+...75,abiotic_control_rep1
+...76,abiotic_control_rep2
+...77,abiotic_control_rep3
+...78,NA
+...79,NA
+...80,NA
+...81,NA
+...82,NA
+...83,NA
+...84,NA
+...85,NA
+...86,NA
+...87,NA
+...88,NA
+...89,NA
+...90,NA
+...91,NA
+...92,NA
+...93,NA
+...94,NA
+...95,NA
+...96,NA
+...97,NA
+...98,NA
