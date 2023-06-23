@@ -7,93 +7,93 @@ A3,NA
 A4,NA
 A5,NA
 A6,NA
-A7,Lacticasei + 4NP butyrate
-A8,Lacticasei + 4NP butyrate
-A9,Lacticasei + 4NP butyrate
-A10,Lacticasei_boiled_control_4NPbutyrate
-A11,Lacticasei_boiled_control_4NPbutyrate
-A12,Lacticasei_boiled_control_4NPbutyrate
+A7,NA
+A8,NA
+A9,NA
+A10,NA
+A11,NA
+A12,NA
 B1,NA
 B2,NA
 B3,NA
 B4,NA
 B5,NA
 B6,NA
-B7,Lacticasei biotic control
-B8,Lacticasei biotic control
-B9,Lacticasei biotic control
-B10,Tris + 4NP butyrate
-B11,Tris + 4NP butyrate
-B12,Tris + 4NP butyrate
+B7,NA
+B8,NA
+B9,NA
+B10,NA
+B11,NA
+B12,NA
 C1,NA
 C2,NA
 C3,NA
 C4,NA
 C5,NA
 C6,NA
-C7,stdcurve_0
-C8,stdcurve_1
-C9,stdcurve_2
-C10,stdcurve_3
-C11,stdcurve_4
-C12,stdcurve_5
+C7,NA
+C8,NA
+C9,NA
+C10,NA
+C11,NA
+C12,NA
 D1,NA
 D2,NA
 D3,NA
 D4,NA
 D5,NA
 D6,NA
-D7,Lacticasei + 4NP trimethylacetate
-D8,Lacticasei + 4NP trimethylacetate
-D9,Lacticasei + 4NP trimethylacetate
-D10,Lacticasei_boiled_control_4NPtrimethylacetate
-D11,Lacticasei_boiled_control_4NPtrimethylacetate
-D12,Lacticasei_boiled_control_4NPtrimethylacetate
+D7,NA
+D8,NA
+D9,NA
+D10,NA
+D11,NA
+D12,NA
 E1,NA
 E2,NA
 E3,NA
 E4,NA
 E5,NA
 E6,NA
-E7,buffer_(Tris)
-E8,buffer_(Tris)
-E9,buffer_(Tris)
-E10,Tris + 4NP trimethylacetate
-E11,Tris + 4NP trimethylacetate
-E12,Tris + 4NP trimethylacetate
+E7,S146 + 4NP Trimethylacetate
+E8,S146 + 4NP Trimethylacetate
+E9,S146 + 4NP Trimethylacetate
+E10,S146_boiled_control_4NP Trimethylacetate
+E11,S146_boiled_control_4NP Trimethylacetate
+E12,S146_boiled_control_4NP Trimethylacetate
 F1,NA
 F2,NA
 F3,NA
 F4,NA
 F5,NA
 F6,NA
-F7,elution buffer 500mM imidazole+ 4NP butyrate
-F8,elution buffer 500mM imidazole+ 4NP butyrate
-F9,elution buffer 500mM imidazole+ 4NP butyrate
-F10,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F11,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F12,elution buffer 500mM imidazole+ 4NP trimethylacetate
+F7,S146 biotic control
+F8,S146 biotic control
+F9,S146 biotic control
+F10,Tris + 4NP Trimethylacetate
+F11,Tris + 4NP Trimethylacetate
+F12,Tris + 4NP Trimethylacetate
 G1,NA
 G2,NA
 G3,NA
 G4,NA
 G5,NA
 G6,NA
-G7,NA
-G8,NA
-G9,NA
-G10,NA
-G11,NA
-G12,NA
-H1,NA
-H2,NA
-H3,NA
-H4,NA
-H5,NA
-H6,NA
-H7,NA
-H8,NA
-H9,NA
-H10,NA
-H11,NA
-H12,NA
+G7,stdcurve_0
+G8,stdcurve_1
+G9,stdcurve_2
+G10,stdcurve_3
+G11,stdcurve_4
+G12,stdcurve_5
+H1,buffer_(Tris)
+H2,buffer_(Tris)
+H3,buffer_(Tris)
+H4,S170 biotic control
+H5,S170 biotic control
+H6,S170 biotic control
+H7,S170 + 4NP Trimethylacetate
+H8,S170 + 4NP Trimethylacetate
+H9,S170 + 4NP Trimethylacetate
+H10,S170_boiled_control_4NP Trimethylacetate
+H11,S170_boiled_control_4NP Trimethylacetate
+H12,S170_boiled_control_4NP Trimethylacetate
