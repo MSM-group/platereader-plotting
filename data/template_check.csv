@@ -1,12 +1,12 @@
 ...1,...2
 Time,time
 T° 410,temperature_c
-A1,NA
-A2,NA
-A3,NA
-A4,NA
-A5,NA
-A6,NA
+A1,enzyme + buffer + 4NP trimethylacetate
+A2,enzyme + buffer + 4NP trimethylacetate
+A3,enzyme + buffer + 4NP trimethylacetate
+A4,abiotic control
+A5,abiotic control
+A6,abiotic control
 A7,NA
 A8,NA
 A9,NA
@@ -55,45 +55,45 @@ E3,NA
 E4,NA
 E5,NA
 E6,NA
-E7,S146 + 4NP Trimethylacetate
-E8,S146 + 4NP Trimethylacetate
-E9,S146 + 4NP Trimethylacetate
-E10,S146_boiled_control_4NP Trimethylacetate
-E11,S146_boiled_control_4NP Trimethylacetate
-E12,S146_boiled_control_4NP Trimethylacetate
+E7,NA
+E8,NA
+E9,NA
+E10,NA
+E11,NA
+E12,NA
 F1,NA
 F2,NA
 F3,NA
 F4,NA
 F5,NA
 F6,NA
-F7,S146 biotic control
-F8,S146 biotic control
-F9,S146 biotic control
-F10,Tris + 4NP Trimethylacetate
-F11,Tris + 4NP Trimethylacetate
-F12,Tris + 4NP Trimethylacetate
+F7,NA
+F8,NA
+F9,NA
+F10,NA
+F11,NA
+F12,NA
 G1,NA
 G2,NA
 G3,NA
 G4,NA
 G5,NA
 G6,NA
-G7,stdcurve_0
-G8,stdcurve_1
-G9,stdcurve_2
-G10,stdcurve_3
-G11,stdcurve_4
-G12,stdcurve_5
-H1,buffer_(Tris)
-H2,buffer_(Tris)
-H3,buffer_(Tris)
-H4,S170 biotic control
-H5,S170 biotic control
-H6,S170 biotic control
-H7,S170 + 4NP Trimethylacetate
-H8,S170 + 4NP Trimethylacetate
-H9,S170 + 4NP Trimethylacetate
-H10,S170_boiled_control_4NP Trimethylacetate
-H11,S170_boiled_control_4NP Trimethylacetate
-H12,S170_boiled_control_4NP Trimethylacetate
+G7,NA
+G8,NA
+G9,NA
+G10,NA
+G11,NA
+G12,NA
+H1,NA
+H2,NA
+H3,NA
+H4,NA
+H5,NA
+H6,NA
+H7,NA
+H8,NA
+H9,NA
+H10,NA
+H11,NA
+H12,NA
