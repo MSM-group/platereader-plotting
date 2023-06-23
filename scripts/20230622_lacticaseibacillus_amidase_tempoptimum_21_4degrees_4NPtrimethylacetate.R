@@ -24,8 +24,8 @@ library("hms")
 
 
 # Set the substrate (compound) and the date for enzyme activity screening
-enzym <- "4degrees" # change this for p055 etc.
-ddmmyy <- "20230622"
+enzym <- "21_4" # change this for p055 etc.
+ddmmyy <- "20230623"
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", ddmmyy, "/"))
@@ -74,13 +74,40 @@ resbind <- tma1 %>%
   dplyr::mutate(value = as.numeric(value)) %>%
   dplyr::mutate(variable = gsub("\\.[[:digit:]]", "", variable))
 
+# Plot the standard curve
+pNPs <- resbind %>% 
+  dplyr::filter(grepl("stdcurve", variable)) %>%
+  dplyr::mutate(µL = as.numeric(word(variable, sep = "_", 2))) %>%
+  dplyr::mutate(mM = µL * (8/200)) %>% # 8 mM stock solution, 200 µL final well volume
+  dplyr::mutate(nM = mM * 1e6) %>%
+  dplyr::mutate(nmol = nM * (1/1000) * (1/1000) * 200)  # nmoles = nmoles/L * 1L/1000 mL * 1ml/1000µL * 200 µL (final volume)
 
-
+# Linear regression
+pNP_fit <- lm(value ~ nmol, data = pNPs)
+summary(pNP_fit)
+pdf(paste0("output/", ddmmyy, "_", enzym, "_standard_curve.pdf"))
+pl <- ggplot(pNPs,  aes(x = nmol, y = value, color = time)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(y="Absorbance (410 nm)", x="nmol pNP") +
+  theme(axis.line=element_line(color="black"),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.border=element_blank(),
+        panel.background=element_blank(),
+        text = element_text(size = 8),
+        legend.key= element_rect(fill=NA, color=NA),
+        legend.position="right",
+        legend.title = element_text(size = 8)) + 
+  guides(shape = guide_legend(override.aes = list(size = 10)))
+pl
+dev.off()
+pl
 
 # Calculate slope and intercept of pNP standard curve
-
-b <- 0.1136175
-m <- 0.04623074
+pNP_fit$coefficients
+b <- pNP_fit$coefficients[1] #y = mx +b
+m <- pNP_fit$coefficients[2]
 
 # Now look at data
 dat2 <- resbind %>%

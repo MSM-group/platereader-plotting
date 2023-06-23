@@ -1,30 +1,30 @@
 ...1,...2
 Time,time
 T° 410,temperature_c
-A1,enzyme + buffer + 4NP trimethylacetate
-A2,enzyme + buffer + 4NP trimethylacetate
-A3,enzyme + buffer + 4NP trimethylacetate
-A4,abiotic control
-A5,abiotic control
-A6,abiotic control
-A7,NA
-A8,NA
-A9,NA
-A10,NA
-A11,NA
-A12,NA
-B1,NA
-B2,NA
-B3,NA
-B4,NA
-B5,NA
-B6,NA
-B7,NA
-B8,NA
-B9,NA
-B10,NA
-B11,NA
-B12,NA
+A1,stdcurve_0_20°C
+A2,stdcurve_1_20°C
+A3,stdcurve_2_20°C
+A4,stdcurve_3_20°C
+A5,stdcurve_4_20°C
+A6,stdcurve_5_20°C
+A7,abiotic_control_20°C
+A8,abiotic_control_20°C
+A9,abiotic_control_20°C
+A10,biotic_control_20°C
+A11,biotic_control_20°C
+A12,biotic_control_20°C
+B1,10uL Enzyme + substrate
+B2,10uL Enzyme + substrate
+B3,10uL Enzyme + substrate
+B4,5uL Enzyme + 5uL TNG + substrate
+B5,5uL Enzyme + 5uL TNG + substrate
+B6,5uL Enzyme + 5uL TNG + substrate
+B7,1uL enzyme + 9uL TNG buffer + substrate
+B8,1uL enzyme + 9uL TNG buffer + substrate
+B9,1uL enzyme + 9uL TNG buffer + substrate
+B10,Inactivated_enzyme_control
+B11,Inactivated_enzyme_control
+B12,Inactivated_enzyme_control
 C1,NA
 C2,NA
 C3,NA
