@@ -41,7 +41,7 @@ temp # lots of NAs are ok
 
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, ""), pattern = enzym, full.names = T) 
- tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
+tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right
 
 # Split out the files into three separate files for each triplicate
@@ -54,7 +54,7 @@ newnam
 
 template_check <- bind_cols(oldnam, newnam)
 template_check # compares template to platereader column names
-write_csv(template_check, "data/template_check.csv")
+# write_csv(template_check, "data/template_check.csv")
 # Open the file and look at it to double check it matches
 colnames(tma) <- make.unique(newnam) # set the column names
 tma
@@ -107,7 +107,8 @@ pl
 pNP_fit$coefficients
 b <- pNP_fit$coefficients[1] #y = mx +b
 m <- pNP_fit$coefficients[2]
-
+b
+m
 # Now look at data
 dat2 <- resbind %>%
   dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec|NA", variable)) # Filter out variables you don't want
