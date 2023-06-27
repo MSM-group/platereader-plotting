@@ -11,7 +11,7 @@ library("hms")
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "lacticaseibacillus" 
 yyyymmdd <- "20230623"
-pH_row <- "25" # new entry, change for each temperature
+pH_row <- "35degrees" # new entry, change for each temperature
 index <- c(3:4)
 
 # Read in the plate template
@@ -23,11 +23,11 @@ file_path <- file_path[grepl(pattern=pH_row,file_path)]
 temp <- read_excel(file_path) %>%
   janitor::clean_names() %>%
   dplyr::select(-x1) %>% 
-  slice(index)%>% 
+  #slice(index)%>% 
   as.matrix(bycol = T) %>%
   t %>%
   as.vector()
-
+temp[49:72]<- "NA"
 
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, "/"), pattern = paste0(pH_row), full.names = T) 
@@ -43,14 +43,17 @@ newnam <- c("time", "temperature_c", paste0(temp))
 
 # Clean up the data
 tma1 <- tma %>%
+  dplyr::select(-contains("NA"))%>%
   dplyr::mutate(time = round(as.numeric(lubridate::hms(stringr::word(time, sep = " ", start = 2)))/60))
 newnam
-colnames(tma1) <- newnam
+colnames(tma1) <- make.unique(newnam)
 names(tma1)
+tma1
 
 # Convert from wide to long format
 colnames(tma1)
 resbind <- tma1 %>%
+  select(!contains("NA."))%>%
   reshape2::melt(., id = 'time') %>%
   dplyr::filter(variable != 'temperature_c') %>%
   dplyr::mutate(value = as.numeric(value)) %>%
@@ -59,7 +62,7 @@ resbind <- tma1 %>%
 # Plot the standard curve
 pNPs <- resbind %>% 
   dplyr::filter(grepl("stdcurve", variable)) %>% 
-  dplyr::filter(!grepl("stdcurve_4", variable)) %>% # stdcurve_1 
+  dplyr::filter(!grepl("stdcurve_5", variable)) %>% # stdcurve_1 
   dplyr::mutate(µL = as.numeric(word(variable, sep = "_", 2))) %>%
   dplyr::mutate(mM = µL * (8/200)) %>% # 8 mM stock solution, 200 µL final well volume
   dplyr::mutate(nM = mM * 1e6) %>%
@@ -96,8 +99,9 @@ pl
 
 # Now look at data
 dat2 <- resbind %>%
+  #filter(!is.na(.))%>%
+  drop_na()%>%
   dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec", variable)) # Filter out variables you don't want
-
 dat3 <- dat2 %>%
   dplyr::mutate(nmols_pNP = (value - b)/m) %>%
   group_by(variable, time) %>%

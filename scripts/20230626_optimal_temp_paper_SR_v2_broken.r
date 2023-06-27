@@ -11,13 +11,14 @@ library("hms")
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "lacticaseibacillus" 
 yyyymmdd <- "20230623"
-pH_row <- "25" # new entry, change for each temperature
-index <- c(3:4)
+pH_row <- "30" # new entry, change for each temperature
+index <- c(5:6)
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", yyyymmdd, "/"))
-file_path <- list.files(folder_path, pattern = "Template", full.names = T)
-file_path <- file_path[!grepl(pattern="~",file_path)]
+file_path <- list.files(folder_path, pattern = "20230623_tempoptimum_lacticaseibacillus_amidase_21_4degrees_25degrees_30degrees_Jungfrau1_Template", full.names = T)
+#file_path <- list.files(folder_path, pattern = "Template", full.names = T)
+#file_path <- file_path[!grepl(pattern="~",file_path)]
 file_path <- file_path[grepl(pattern=pH_row,file_path)]
 
 temp <- read_excel(file_path) %>%
@@ -33,6 +34,7 @@ temp <- read_excel(file_path) %>%
 tmafils <- list.files(paste0(folder_path, "/"), pattern = paste0(pH_row), full.names = T) 
 tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|Template|Tris", tmafils)] # remove any temporary files
 tmafils # check the file name is right# 
+
 
 tma <- read_excel(tmafils, range = "B29:CU60", col_types = c("date", rep("numeric", 97))) %>%
   janitor::clean_names() # changed!
@@ -194,7 +196,7 @@ slopes <- function(d) {
 }
 
 ## Take the slope from the steepest slope over 5 minutes
-windowsize <- 20
+windowsize <- 4
 
 # Calculate slopes for each enzyme
 orgs <- unique(a$variable)
@@ -211,7 +213,7 @@ resll <- do.call(rbind.data.frame, res)
 
 # Find max slope for each organism
 resmax <- resl %>%
-  #dplyr::filter(r2 >= 0.8) %>% # make sure R^2 is above or equal to 0.8
+  dplyr::filter(r2 >= 0.8) %>% # make sure R^2 is above or equal to 0.8
   group_by(org) %>%
   summarise_each(funs(max_slope = max), slope) #%>%
 #dplyr::filter(max_slope > 0.25 ) # SET activity threshold of 0.1
@@ -219,7 +221,7 @@ resmax <- resl %>%
 # Merge with the original dataset
 slope_merg <- resmax %>%
   inner_join(., resl, by = "org", multiple = "all") %>%
-  #dplyr::filter(r2 >= 0.8) %>%
+  dplyr::filter(r2 >= 0.8) %>%
   group_by(org) %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::mutate(pH = pH_row) %>%
