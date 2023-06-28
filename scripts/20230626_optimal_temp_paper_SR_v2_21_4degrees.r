@@ -11,8 +11,8 @@ library("hms")
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "lacticaseibacillus" 
 yyyymmdd <- "20230623"
-pH_row <- "45degrees" # new entry, change for each temperature
-
+pH_row <- "21_4degrees" # new entry, change for each temperature
+#index <- c(1:2)
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", yyyymmdd, "/"))
@@ -28,7 +28,7 @@ temp <- read_excel(file_path) %>%
   t %>%
   as.vector()
 temp
-temp[73:96]<- "NA"
+temp[25:96]<- "NA"
 temp
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, "/"), pattern = paste0(pH_row), full.names = T) 

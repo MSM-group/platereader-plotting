@@ -29,20 +29,32 @@ colnames(readin) <- c("filename",
 "intercept",
 "pH")
 
+# we add 20 µL of enzyme in 200 µL total volume
+# The enzyme started out 0.22mg/mL
+# That is 52652.53 g/mol
+#(20 µL) * (1 mL/1000 µL) * (0.22 mg/1 mL) * (1 g/1000 mg) * (1 mol/52652.53 g) * (1e9 nmoles / 1 mol)
+20 * (1/1000) * (0.22) * (1/1000) * (1/52652.53) * (1e9) 
+#0.08356673 nmoles of enzyme per 20uL
+# Conversion per Liter
+# 0.08356673 * (1e6/200) = nm OR  µM
+
 
 readclean <- readin %>%
   dplyr::select(-1) %>%
   filter(!grepl("max_slope", max_slope)) %>% # remove the column names
+  dplyr::mutate(max_slope = as.numeric(max_slope))%>%
+  dplyr::mutate(sec_slope = max_slope /120) %>% # 
+  dplyr::mutate(nm_slope = sec_slope /0.08356673) %>% # to make one nanomole of enzyme
   distinct() %>%
-  dplyr::mutate(max_slope = as.numeric(max_slope))
+  dplyr::mutate(nm_slope = as.numeric(nm_slope))
 readclean
 
-readclean$max_slope
+readclean$nm_slope
 
 merg_summ <- readclean %>%
   dplyr::mutate(pH_num = parse_number(pH)) %>%
   group_by(pH_num) %>%
-  summarise_each(funs(mean, sd), max_slope)
+  summarise_each(funs(mean, sd), nm_slope)
 
 # Fix the point5
 grepl(".5", merg_summ$pH_num)

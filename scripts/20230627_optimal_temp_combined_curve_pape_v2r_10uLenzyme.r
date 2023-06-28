@@ -10,7 +10,8 @@ library("ggpubr")
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "lacticaseibacillus" 
 yyyymmdd <- "20230623"
-
+volume <- 10
+ID <- "mean_1"
 # Read in the results
 files <- list.files("output/", pattern = paste0( "__all_data_calculated_slopes.csv"), full.names = T)
 files <- files[grepl(yyyymmdd, files)]
@@ -21,29 +22,32 @@ readin <- tibble(filename = files) %>%
   ) %>%
   unnest(.,cols = c(file_contents))
 
-# we add 5 µL of enzyme in 200 µL total volume
-# The enzyme started out 0.5 mg/ml
-# That is 66004.46 g/mol
-# (5 µL) * (1 mL/1000 µL) * (0.5 mg/1 mL) * (1 g/1000 mg) * (1 mol/66004.46 g) * (1e9 nmoles / 1 mol)
-# 5 * (1/1000) * (0.5) * (1/1000) * (1/66004.46) * (1e9) = 0.03787623 nmoles in 200 µL
+# we add 20 µL of enzyme in 200 µL total volume
+# The enzyme started out 0.22mg/mL
+# That is 52652.53 g/mol
+#(20 µL) * (1 mL/1000 µL) * (0.22 mg/1 mL) * (1 g/1000 mg) * (1 mol/52652.53 g) * (1e9 nmoles / 1 mol)
+nmolesenzyme <- volume * (1/1000) * (0.22) * (1/1000) * (1/52652.53) * (1e9) 
+#0.08356673 nmoles of enzyme per 20uL
 # Conversion per Liter
-# 0.03787623 * (1e6/200) = 189 nm OR 0.189 µM
+# 0.08356673 * (1e6/200) = nm OR  µM
 
 readclean <- readin %>%
   dplyr::select(-1) %>%
-  filter(!grepl("max_slope", max_slope)) %>%
-  dplyr::mutate(hr_slope = max_slope * 2 * 60) %>% # per hour 
-  dplyr::mutate(nm_slope = max_slope * 27.02703) %>% # to make one nanomole of enzyme
-  dplyr::mutate(log_slope = log10(nm_slope)) %>% # remove the column names
+  filter(!grepl("max_slope", max_slope)) %>% # remove the column names
+  dplyr::mutate(max_slope = as.numeric(max_slope))%>%
+  dplyr::mutate(sec_slope = max_slope /120) %>% # 
+  dplyr::mutate(nm_slope = sec_slope /nmolesenzyme) %>% # to make one nanomole of enzyme
   distinct() %>%
-  dplyr::mutate(log_slope = as.numeric(log_slope))
+  dplyr::mutate(nm_slope = as.numeric(nm_slope)) %>%
+  filter(org==ID)
+readclean
 
 merg_summ <- readclean %>%
   dplyr::mutate(temp_num = parse_number(pH)) %>%
   group_by(temp_num) %>%
-  summarise_each(funs(mean, sd), log_slope)
+  summarise_each(funs(mean, sd), nm_slope)
 
-pdf(paste0("output/", yyyymmdd, "_", enzym, "_combined_final_graph.pdf"))
+pdf(paste0("output/", yyyymmdd, "_", enzym, ID, "_combined_final_graph.pdf"))
 pl <- ggplot(merg_summ,  aes(x = temp_num, y = mean)) + 
   geom_point() +
   geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6) +
@@ -53,7 +57,7 @@ pl <- ggplot(merg_summ,  aes(x = temp_num, y = mean)) +
 pl
 dev.off()
 
-
+pl
 pdf(paste0("output/", yyyymmdd, "_", enzym, "_combined_final_graph_std_dev.pdf"))
 pl <- ggplot(merg_summ,  aes(x = temp_num, y = mean)) + 
   geom_point() +

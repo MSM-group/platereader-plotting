@@ -12,7 +12,7 @@ library("hms")
 enzym <- "lacticaseibacillus" 
 yyyymmdd <- "20230623"
 pH_row <- "35degrees" # new entry, change for each temperature
-index <- c(3:4)
+
 
 # Read in the plate template
 folder_path <- file.path(paste0("data/", yyyymmdd, "/"))
@@ -27,8 +27,9 @@ temp <- read_excel(file_path) %>%
   as.matrix(bycol = T) %>%
   t %>%
   as.vector()
+temp
 temp[49:72]<- "NA"
-
+temp
 # Read in the raw platereader data
 tmafils <- list.files(paste0(folder_path, "/"), pattern = paste0(pH_row), full.names = T) 
 tmafils <- tmafils[!grepl("~|setup|Bradford|screenshot|split|Template|Tris", tmafils)] # remove any temporary files
@@ -38,6 +39,7 @@ tma <- read_excel(tmafils, range = "B29:CU60", col_types = c("date", rep("numeri
   janitor::clean_names() # changed!
 oldnam <- as.vector(t(colnames(tma))) 
 newnam <- c("time", "temperature_c", paste0(temp))
+
 #template_check <- bind_cols(oldnam, newnam)
 #template_check # compares template to platereader column names
 
@@ -62,7 +64,7 @@ resbind <- tma1 %>%
 # Plot the standard curve
 pNPs <- resbind %>% 
   dplyr::filter(grepl("stdcurve", variable)) %>% 
-  dplyr::filter(!grepl("stdcurve_5", variable)) %>% # stdcurve_1 
+  dplyr::filter(!grepl("x", variable)) %>% # stdcurve_1 
   dplyr::mutate(µL = as.numeric(word(variable, sep = "_", 2))) %>%
   dplyr::mutate(mM = µL * (8/200)) %>% # 8 mM stock solution, 200 µL final well volume
   dplyr::mutate(nM = mM * 1e6) %>%
@@ -99,9 +101,10 @@ pl
 
 # Now look at data
 dat2 <- resbind %>%
-  #filter(!is.na(.))%>%
+  dplyr::filter(variable!="NA")%>%
   drop_na()%>%
   dplyr::filter(!grepl("stdcurve|Tris|^0$|emptvec", variable)) # Filter out variables you don't want
+dat2
 dat3 <- dat2 %>%
   dplyr::mutate(nmols_pNP = (value - b)/m) %>%
   group_by(variable, time) %>%
@@ -141,9 +144,9 @@ dat4 <- dat2 %>%
 colnames(dat4)
 
 dat_normalized <- dat4 %>%
-  dplyr::mutate(mean_1 = cur_data()[[1]]-cur_data()[[7]]) %>% # subtract the inactivated control
-  dplyr::mutate(mean_2 = cur_data()[[2]]-cur_data()[[7]]) %>%
-  dplyr::mutate(mean_3 = cur_data()[[3]]-cur_data()[[7]]) %>%
+  dplyr::mutate(mean_1 = cur_data()[[2]]-cur_data()[[7]]) %>% # subtract the inactivated control
+  dplyr::mutate(mean_2 = cur_data()[[3]]-cur_data()[[7]]) %>%
+  dplyr::mutate(mean_3 = cur_data()[[4]]-cur_data()[[7]]) %>%
   dplyr::mutate(id = pH_row) 
 
 dat_normalized_long <- dat_normalized %>%
