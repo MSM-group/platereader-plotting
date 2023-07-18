@@ -42,6 +42,7 @@ readclean <- readin %>%
   dplyr::mutate(nm_slope = as.numeric(nm_slope)) %>%
   filter(org==ID)
 readclean
+write_csv(readclean, paste0("output/", yyyymmdd, "_", enzym, "_", volume, "_slopes_normalized.csv"))
 
 merg_summ <- readclean %>%
   dplyr::mutate(temp_num = parse_number(pH)) %>%
