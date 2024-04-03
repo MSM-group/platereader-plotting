@@ -64,4 +64,6 @@ pl <- ggplot(merg_summ,  aes(x = temperature, y = mean)) +
 pl
 dev.off()
 
+ggsave(plot = pl, filename = "new_temperature_stability_PLA_plot.png", width = 9, height = 3, dpi=900)
+
 ggsave(plot = pl, filename = paste0("output/", yyyymmdd, "_", enzym, "temp_stability_combined_final_graph.png"), width = 8, height = 3)

@@ -62,7 +62,9 @@ grepl(".5", merg_summ$pH_num)
 
 merg_summ$pH_num[grepl(".5", merg_summ$pH_num)] <- gsub("5", "\\.5", merg_summ$pH_num[grepl(".5", merg_summ$pH_num)])
 merg_summ$pH_num <- as.numeric(merg_summ$pH_num)
-merg_summ$pH_num
+
+
+
 pdf(paste0("output/", yyyymmdd, "_", enzym, "_combined_final_graph.pdf"))
 pl <- ggplot(merg_summ,  aes(x = pH_num, y = mean)) + 
   geom_point() +
@@ -73,4 +75,16 @@ pl <- ggplot(merg_summ,  aes(x = pH_num, y = mean)) +
 pl
 dev.off()
 ggsave(paste0("output/", yyyymmdd, "_", enzym, "_combined_final_graph.png"), pl, width = 4, height = 4)
+pl
+
+filtered_data <- merg_summ %>% filter(pH_num != 9)
+pl <- ggplot(filtered_data,  aes(x = pH_num, y = mean)) + 
+  geom_point() +
+  geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3,size=0.6) +
+  ylab("Activity \n nmol pNP/nmol enzyme/minute") +
+  xlab("pH") +
+  theme_pubr()
+pl
+dev.off()
+ggsave("new_pH_optimum_PLA.png", pl, width = 5, height = 3, dpi=900)
 pl
