@@ -22,7 +22,6 @@ library("RColorBrewer")
 library("randomcoloR")
 library("hms")
 
-
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "newbatch" # change this for p055 etc.
 ddmmyy <- "20230613"

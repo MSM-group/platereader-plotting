@@ -65,9 +65,9 @@ pNPs <- resbind %>%
   dplyr::filter(!grepl("x", variable)) %>% # stdcurve_1 
   dplyr::mutate(µL = as.numeric(word(variable, sep = "_", -1))) %>%
   dplyr::mutate(mM = µL * (8/200)) %>% # 8 mM stock solution, 200 µL final well volume
-  dplyr::mutate(nM = mM * 1e6) %>%
-  dplyr::mutate(nmol = nM * (1/1000) * (1/1000) * 200) %>%
-  dplyr::mutate(pH = word(variable, sep = "_", 1))# nmoles = nmoles/L * 1L/1000 mL * 1ml/1000µL * 200 µL (final volume)
+  dplyr::mutate(nM = mM * 1e6) %>% 
+  dplyr::mutate(nmol = nM * (1/1000) * (1/1000) * 200) %>% # to convert from nM to nanomoles -> first volume to µL and then * 200 µL
+  dplyr::mutate(pH = word(variable, sep = "_", 1)) # nmoles = nmoles/L * 1L/1000 mL * 1ml/1000µL * 200 µL (final volume)
 pNPs
 
 # Linear regression

@@ -13,6 +13,8 @@ yyyymmdd <- "20230623"
 
 # Read in the results
 files <- list.files("output/", pattern = paste0("_slopes_normalized"), full.names = T)
+files <- files[!grepl("_5_|_1_", files)] # remove old files
+
 readin <- tibble(filename = files) %>%
   mutate(file_contents = purrr::map(filename,          
                                     ~ read_csv(file.path(.), col_names = T)) # a new data column
@@ -36,11 +38,11 @@ pl <- ggplot(merg_summ,  aes(x = temp_num, y = mean, color= concentration_factor
   geom_errorbar(aes(ymax=mean + sd, ymin = mean - sd), width=0.3, size=0.6) +
   theme_pubr() +
   xlab("Temperature (°C)") +
-  ylab("Activity \n log(nmol pNP/nmol enzyme/ hr)") +
+  ylab("Activity \n nmol pNP/nmol enzyme/minute") +
   scale_color_manual(values = c("#bfbfff", "cornflowerblue", "navy"))
 pl
 dev.off()
 
 
-ggsave(paste0("output/", yyyymmdd, "_", enzym, "_temperature_optimum_graph.png"), pl, width = 8, height = 5)
+ggsave(paste0("output/", yyyymmdd, "_", enzym, "_temperature_optimum_graph.png"), pl, width = 5, height = 5)
 

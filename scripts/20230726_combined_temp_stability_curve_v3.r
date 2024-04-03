@@ -46,7 +46,7 @@ readclean <- readin %>%
   dplyr::mutate(sec_slope = as.numeric(max_slope)) %>%
   #dplyr::mutate(sec_slope = max_slope /120) %>% # REMOVE THIS CONVERSION
   dplyr::mutate(nm_slope = sec_slope /nmolesenzyme) %>%
-  distinct() %>%
+  distinct() 
 readclean
 
 merg_summ <- readclean %>%
