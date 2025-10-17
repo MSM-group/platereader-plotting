@@ -13,7 +13,7 @@ tmafils <- "data/20251017/20251008_colorimetric_data_labeled.xlsx"
 tma <- read_excel(tmafils, col_types = c("date", rep("numeric", 384))) %>%
   janitor::clean_names()
 
-tma1 <- tma %>%  # remove the column for temperature (constant at 37C)
+tma1 <- tma %>%  
   dplyr::filter(complete.cases(.)) %>% # removes rows containing NAs
   dplyr::mutate(time = round(as.numeric(lubridate::hms(stringr::word(time, sep = " ", start = 2)))/60), 0) %>%
   dplyr::select(-contains("NA.")) %>%
