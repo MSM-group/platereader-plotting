@@ -43,8 +43,7 @@ for (substrate in unique_substrates) {
   print(rfp_values)
   colnames(rfp_values)
   
-  # 2. Identify all concentration columns (C*) for this specific substrate
-  # This regex finds columns starting with 'C' followed by digits, then '_', and ending with the substrate name.
+  # 2. Identify all columns for this specific substrate
   cx_col_names <- grep(substrate, names(tma1), value = TRUE)
   cx_col_names <- cx_col_names[!grepl("rfp", cx_col_names)]
   if (length(cx_col_names) == 0) {
@@ -77,9 +76,6 @@ colnames(corrected_data)
 
 # Read in the Boccomero standard curve
 stdcurve <- read_excel("data/20251017/pnitroaniline_stdcurve.xlsx")
-
-# 200 µM of stock solution -> 70 µL added to a final volume 80µL
-# (200)(70) = (x)(80)
 
 pNP_fit <- lm(abs ~ conc, data = stdcurve)
 summary(pNP_fit)
@@ -152,7 +148,7 @@ resll <- do.call(rbind.data.frame, res)
 
 # Find max slope for each organism
 resmax <- resl %>%
-  #dplyr::filter(r2 >= 0.2) %>% # make sure R^2 is above a threshold
+  #dplyr::filter(r2 >= 0.2) %>% # optional, to make sure R^2 is above a threshold
   group_by(enz) %>%
   summarise_each(funs(max_slope = max), slope) %>%
   dplyr::filter(max_slope > 0) 
@@ -165,7 +161,7 @@ slope_merg <- resmax %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::select(enz, max_slope, r2, intercept)
 
-# Plot winners on graph
+# Plot slopes on graph
 merg_all <- slope_merg %>% 
   left_join(., a, by = c("enz" = "variable")) %>% # to exclude inactive ones
   dplyr::mutate(winners = case_when(is.na(max_slope) ~ " inactive",
@@ -199,13 +195,13 @@ pdf("output/prot_norm_split_by_substrate.pdf", width = 20)
 pl
 dev.off()
 
-###### 
+###### NORMALIZATION
 
 slope_final0 <- slope_merg[order(slope_merg$max_slope, decreasing = T),] %>%
   dplyr::mutate(substrate = word(enz, sep = "_", 2)) %>%
   dplyr::mutate(colony = word(enz, sep = "_", 1))
 
-# Now read in the protein concentrations
+# Read in the protein concentrations
 prot2 <- read_excel("data/20251017/20251007_directed_evo_protein_concentration_expressers.xlsx")
 prot2$Sample <- tolower(prot2$Sample)
 
@@ -214,9 +210,8 @@ slope_final <- slope_final0 %>%
 
 slope_final <- slope_final %>%
   mutate(max_slope = max_slope / Protein_Conc_nM_per_OD)
-# write_csv(slope_final, paste0("data/20251017/calculated_slopes.csv"))
 
-# Make the histogram
+# Make the histograms
 target_means <- slope_final %>%
   dplyr::filter(colony %in% c("wt", "rfp")) %>%
   group_by(substrate, colony) %>%
@@ -224,7 +219,6 @@ target_means <- slope_final %>%
     mean_slope = mean(max_slope, na.rm = TRUE),
     .groups = 'drop'
   )
-#data <- read_csv("data/20251017/prot_norm_calculated_slopes.csv")
 
 # --- 2. Calculate WT Reference Means and Fold Change ---
 
