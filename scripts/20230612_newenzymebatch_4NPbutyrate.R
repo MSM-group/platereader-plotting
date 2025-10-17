@@ -22,7 +22,6 @@ library("RColorBrewer")
 library("randomcoloR")
 library("hms")
 
-
 # Set the substrate (compound) and the date for enzyme activity screening
 enzym <- "newbatch" # change this for p055 etc.
 ddmmyy <- "20230612"
@@ -214,10 +213,10 @@ resmax <- resl %>%
   dplyr::filter(max_slope > 0 ) # SET activity threshold of 0.1
 resmax
 
+
 # Merge with the original dataset
 slope_merg <- resmax %>%
-  inner_join(., resl, by = "org") %>%
-  #dplyr::filter(r2 >= 0.9) %>% 
+  inner_join(., resl, by = "enz") %>%
   group_by(org) %>%
   dplyr::filter(slope == max(slope)) %>%
   dplyr::select(org, max_slope, r2, intercept)

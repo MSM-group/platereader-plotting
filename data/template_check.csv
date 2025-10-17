@@ -10,9 +10,9 @@ A6,NA
 A7,Lacticasei + 4NP butyrate
 A8,Lacticasei + 4NP butyrate
 A9,Lacticasei + 4NP butyrate
-A10,Lacticasei_boiled_control_4NPbutyrate
-A11,Lacticasei_boiled_control_4NPbutyrate
-A12,Lacticasei_boiled_control_4NPbutyrate
+A10,Lacticasei_boiled_control
+A11,Lacticasei_boiled_control
+A12,Lacticasei_boiled_control
 B1,NA
 B2,NA
 B3,NA
@@ -31,48 +31,48 @@ C3,NA
 C4,NA
 C5,NA
 C6,NA
-C7,stdcurve_0
-C8,stdcurve_1
-C9,stdcurve_2
-C10,stdcurve_3
-C11,stdcurve_4
-C12,stdcurve_5
+C7,buffer_(Tris)
+C8,buffer_(Tris)
+C9,buffer_(Tris)
+C10,NA
+C11,NA
+C12,NA
 D1,NA
 D2,NA
 D3,NA
 D4,NA
 D5,NA
 D6,NA
-D7,Lacticasei + 4NP trimethylacetate
-D8,Lacticasei + 4NP trimethylacetate
-D9,Lacticasei + 4NP trimethylacetate
-D10,Lacticasei_boiled_control_4NPtrimethylacetate
-D11,Lacticasei_boiled_control_4NPtrimethylacetate
-D12,Lacticasei_boiled_control_4NPtrimethylacetate
+D7,stdcurve_0_NA
+D8,stdcurve_1_NA
+D9,stdcurve_2_NA
+D10,stdcurve_3_NA
+D11,stdcurve_4_NA
+D12,stdcurve_5_NA
 E1,NA
 E2,NA
 E3,NA
 E4,NA
 E5,NA
 E6,NA
-E7,buffer_(Tris)
-E8,buffer_(Tris)
-E9,buffer_(Tris)
-E10,Tris + 4NP trimethylacetate
-E11,Tris + 4NP trimethylacetate
-E12,Tris + 4NP trimethylacetate
+E7,NA
+E8,NA
+E9,NA
+E10,NA
+E11,NA
+E12,NA
 F1,NA
 F2,NA
 F3,NA
 F4,NA
 F5,NA
 F6,NA
-F7,elution buffer 500mM imidazole+ 4NP butyrate
-F8,elution buffer 500mM imidazole+ 4NP butyrate
-F9,elution buffer 500mM imidazole+ 4NP butyrate
-F10,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F11,elution buffer 500mM imidazole+ 4NP trimethylacetate
-F12,elution buffer 500mM imidazole+ 4NP trimethylacetate
+F7,NA
+F8,NA
+F9,NA
+F10,NA
+F11,NA
+F12,NA
 G1,NA
 G2,NA
 G3,NA
