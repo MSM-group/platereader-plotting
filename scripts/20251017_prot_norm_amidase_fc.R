@@ -114,7 +114,7 @@ a <- dat3 %>%
   dplyr::mutate(minutes = case_when(grepl(max(time), time) ~ 60,
                                     TRUE ~ minutes)) %>%
   dplyr::group_by(variable) %>%
-  dplyr::slice(30:327) %>% # 1000 data points
+  dplyr::slice(30:327) %>% # trim to target linear range
   dplyr::ungroup() %>%
   dplyr::select(variable, minutes, nmols_pNP)
 a
@@ -146,7 +146,7 @@ names(res) <- enz
 resl <- plyr::ldply(res, data.frame)
 resll <- do.call(rbind.data.frame, res)
 
-# Find max slope for each organism
+# Find max slope for each enzyme
 resmax <- resl %>%
   #dplyr::filter(r2 >= 0.2) %>% # optional, to make sure R^2 is above a threshold
   group_by(enz) %>%
