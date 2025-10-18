@@ -65,8 +65,8 @@ for (substrate in unique_substrates) {
 }
 
 # --- Step 5: Save Results ---
-write.csv(corrected_data, row.names = F,
-          file = "data/20251017/datcorrect.csv")
+# write.csv(corrected_data, row.names = F,
+#          file = "data/20251017/datcorrect.csv")
 
 resbind <- corrected_data %>%
   reshape2::melt(., id = 'time') %>%
@@ -83,7 +83,7 @@ pdf(paste0("data/20251017/4nitroaniline_standard_curve.pdf"))
 pl <- ggplot(stdcurve,  aes(x = conc, y = abs)) + 
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(y="Absorbance (410 nm)", x="nmol pNP") +
+  labs(y="Absorbance (410 nm)", x="µmols pNP") +
   theme(axis.line=element_line(color="black"),
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
@@ -207,9 +207,9 @@ prot2$Sample <- tolower(prot2$Sample)
 
 slope_final <- slope_final0 %>%
   left_join(., prot2, by = c("colony" = "Sample"))
-
+prot2$Protein_Conc_nM_per_OD
 slope_final <- slope_final %>%
-  mutate(max_slope = max_slope / Protein_Conc_nM_per_OD)
+  mutate(max_slope = max_slope / (Protein_Conc_nM_per_OD/1000)) # to convert to micromoles
 
 # Make the histograms
 target_means <- slope_final %>%
@@ -291,6 +291,7 @@ slopes_plot <- data_fc %>% # Use the data_fc dataframe with the new column
   ) +
   # Using theme_minimal as a base, then customizing for dark background
   theme_minimal(base_size = 14) +
+  theme_pubr() +
   theme(
     # Set entire plot background to transparent
     plot.background = element_rect(fill = "transparent", color = NA),
@@ -305,8 +306,8 @@ slopes_plot <- data_fc %>% # Use the data_fc dataframe with the new column
     axis.text = element_text(color = "white"),
     axis.title = element_text(color = "white"),
     axis.line = element_line(color = "white"),
-    panel.grid.major = element_line(color = "gray30"),
-    panel.grid.minor = element_line(color = "gray30"),
+    #panel.grid.major = element_line(color = "gray30"),
+    #panel.grid.minor = element_line(color = "gray30"),
     
     # Facet strip background to transparent, text to white
     strip.background = element_rect(fill = "transparent", color = "white"),
@@ -315,8 +316,15 @@ slopes_plot <- data_fc %>% # Use the data_fc dataframe with the new column
     # Legend text and box to white/transparent
     legend.position = "bottom",
     legend.background = element_rect(fill = "transparent", color = NA),
-    legend.key = element_rect(fill = "transparent", color = NA)
-  )
+    legend.key = element_rect(fill = "transparent", color = NA) +
+    # scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+    # # Set y-axis limits and ensure expansion is 0 for the lower bound
+    # scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    coord_cartesian(ylim = c(0, NA), xlim = c(0, NA))
+  ) +
+  # Use the scales to remove the padding expansion
+  scale_x_continuous(expand = expansion(mult = c(0, 0))) +
+ # scale_y_continuous(expand = expansion(mult = c(0, 0)))
 
 # Print the plot
 pdf("data/20251017/histogram_fc_protein_norm.pdf", width = 12, height = 8, bg = "black")
